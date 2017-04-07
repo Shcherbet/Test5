@@ -12,7 +12,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private  MyAdapter adapter;
-    private List<RecyclerItem2> listItems;
+    private List<RecyclerItem> listItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +25,8 @@ public class Main2Activity extends AppCompatActivity {
         listItems = new ArrayList<>();
         //Generate sample data
         for (int i = 0; i<10; i++){
-            //RecyclerItem2 item = new RecyclerItem2("Item " + (i + 1),"Welcome to new traning, this is desc of item " + (i+1));
-            listItems.add(new RecyclerItem2("Item " + (i + 1),"Welcome to new traning, this is desc of item " + (i+1)));
+            //RecyclerItem item = new RecyclerItem("Item " + (i + 1),"Welcome to new traning, this is desc of item " + (i+1));
+            listItems.add(new RecyclerItem("Item " + (i + 1),"Welcome to new traning, this is desc of item " + (i+1)));
         }
         // set adapter
         adapter = new MyAdapter(listItems,this);

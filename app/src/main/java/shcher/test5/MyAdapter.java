@@ -16,10 +16,10 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
-    private List<RecyclerItem2> listItems;
+    private List<RecyclerItem> listItems;
     private Context mContext;
 
-    public MyAdapter(List<RecyclerItem2> listItems, Context mContext) {
+    public MyAdapter(List<RecyclerItem> listItems, Context mContext) {
         this.listItems = listItems;
         this.mContext = mContext;
     }
@@ -31,11 +31,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final   int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        final RecyclerItem2 itemList = listItems.get(position);
+        final RecyclerItem itemList = listItems.get(position);
         //final Re// itemList1 = listItems.get(position);
-        //  final RecyclerItem itemList = listItems.get(position);
+
         holder.myTxtTitle.setText(itemList.getTitle());
         holder.myTxtDescription.setText(itemList.getDescription());
         holder.myTxtOptionDigit.setOnClickListener(new View.OnClickListener() {

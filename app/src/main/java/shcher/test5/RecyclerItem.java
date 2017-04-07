@@ -1,10 +1,11 @@
 package shcher.test5;
 
+
 public class RecyclerItem {
     private String title;
     private String description;
 
-    public RecyclerItem (String title, String description) {
+    public RecyclerItem(String title, String description) {
         this.title = title;
         this.description = description;
     }
@@ -24,6 +25,5 @@ public class RecyclerItem {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
-
-
