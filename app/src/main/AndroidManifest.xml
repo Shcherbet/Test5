@@ -25,6 +25,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="shcher.test5.MainActivity" />
         </activity>
+        <activity android:name=".Main2Activity"
+                android:label="Main2Activity"
+                android:parentActivityName=".MainActivity"
+                >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="shcher.test5.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
