@@ -19,11 +19,7 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     TextView myView;
-    Button myBtn1;
-    Button myBtn2;
-    Button myBtn3;
-    Button myBtn4;
-    Button myBtn5;
+    Button myBtn1,myBtn2,myBtn3,myBtn4,myBtn5,myBtn6;
     CheckBox chb1,chb2;
     MenuItem menuStar;// = menu.findItem(R.id.item1);
     @Override
@@ -37,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         myBtn3 = (Button) findViewById(R.id.button3);
         myBtn4 = (Button) findViewById(R.id.button4);
         myBtn5 = (Button) findViewById(R.id.button5);
+        myBtn6 = (Button) findViewById(R.id.button6);
         chb1 = (CheckBox) findViewById(R.id.checkBox1);
         chb2 = (CheckBox) findViewById(R.id.checkBox2);
 
@@ -61,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.button3:
                         myView.setText(R.string.myViewTxt3);
                         break;
-
                     case R.id.button4:
                         Intent intent = new Intent(MainActivity.this,ScrollingActivity.class);
                         startActivity(intent);
@@ -69,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.button5:
                         Intent intent2 = new Intent(MainActivity.this,Main2Activity.class);
                         startActivity(intent2);
+                        break;
+                    case R.id.button6:
+                        Intent intent3 = new Intent(MainActivity.this,Main3Activity.class);
+                        startActivity(intent3);
                         break;
                     default:
                         break;
@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
         myBtn3.setOnClickListener(OnClickListener);
         myBtn4.setOnClickListener(OnClickListener);
         myBtn5.setOnClickListener(OnClickListener);
+        myBtn6.setOnClickListener(OnClickListener);
+
 
 
     }
