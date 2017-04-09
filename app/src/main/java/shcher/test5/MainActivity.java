@@ -17,15 +17,31 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class MainActivity extends AppCompatActivity {
-    TextView myView;
+    TextView myView,myTxtDate;
     Button myBtn1,myBtn2,myBtn3,myBtn4,myBtn5,myBtn6;
     CheckBox chb1,chb2;
-    MenuItem menuStar;// = menu.findItem(R.id.item1);
+    MenuItem menuStar;
+    Date d;// = menu.findItem(R.id.item1);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        d = new Date();
+        Calendar c = new GregorianCalendar();
+        SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        SimpleDateFormat format2 = new SimpleDateFormat("dd MMMM");
+
+        //format2.format(d)
+        myView = (TextView) findViewById(R.id.myView);
+        myView.setText(format2.format(d));
 
         myView = (TextView) findViewById(R.id.myView);
         myBtn1 = (Button) findViewById(R.id.button1);
