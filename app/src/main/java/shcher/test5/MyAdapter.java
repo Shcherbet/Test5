@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,13 +78,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView myTxtTitle;
         public TextView myTxtDescription;
-        public TextView myTxtOptionDigit;
+        public ImageView myTxtOptionDigit;
         public ViewHolder(View itemView) {
             super(itemView);
             myTxtTitle = (TextView) itemView.findViewById(R.id.myTxtTitle);
             myTxtDescription = (TextView) itemView.findViewById(R.id.myTxtDescrip);
-            myTxtOptionDigit = (TextView) itemView.findViewById(R.id.myTxtOptionDigit);
+            myTxtOptionDigit = (ImageView) itemView.findViewById(R.id.myTxtOptionDigit);
 
         }
     }
+
+
 }

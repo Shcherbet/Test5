@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="shcher.test5.Main2Activity"    >
+
+    <item
+        android:id="@+id/myToday"
+        android:icon="@drawable/ic_today_white_48dp"
+        android:orderInCategory="1"
+        android:title="@string/myRecTxtMenu"
+        app:showAsAction="always"/>
+
+
+
+</menu>

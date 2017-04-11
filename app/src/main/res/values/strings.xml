@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test5_v1_0</string>
+    <string name="app_name">Test5_v1_1</string>
     <string name="version">1_0</string>
     <string name="myViewTxt">Say Hello GitHub!!!</string>
     <string name="myBtn1Txt">Кнопка 1</string>
@@ -13,6 +13,7 @@
     <string name="myItemTxt3">Настройки3</string>
     <string name="myChTxt1">Показать группу меню</string>
     <string name="myChTxt2">Показать пункт меню</string>
+    <string name="myRecTxtMenu">Текущая дата</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -104,5 +105,9 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <integer name="maxDays">365</integer>
+    <integer name="minDays">30</integer>
+
+
 
 </resources>

@@ -26,4 +26,6 @@ public class RecyclerItem {
         this.description = description;
     }
 
+
 }
+
