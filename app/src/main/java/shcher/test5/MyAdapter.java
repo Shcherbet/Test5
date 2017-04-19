@@ -42,7 +42,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item,parent,false);
 
-
         return new ViewHolder(v);
     }
 
@@ -50,17 +49,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         final RecyclerItem itemList = listItems.get(position);
+        dbHelper = new DBHelper(mContext);
+        db = dbHelper.getWritableDatabase();
 
         //final Re// itemList1 = listItems.get(position);
 
         holder.myTxtTitle.setText(itemList.getTitle());
-        holder.myTxtDescription.setText(itemList.getDescription());
+        //holder.myTxtTitle.setTextAppearance(R.style.TextAppearance_AppCompat_Small);
+        //holder.myTxtTitle.setTextSize(R.dimen.text_style_Large);
+
+        //holder.myTxtDescription.setText(itemList.getDescription());//?android:textAppearanceLarge
         holder.myTxtOptionDigit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Diplay options menu
-                dbHelper = new DBHelper(mContext);
-                db = dbHelper.getWritableDatabase();
+                //dbHelper = new DBHelper(mContext);
+                //db = dbHelper.getWritableDatabase();
                 //db.execSQL("ALTER TABLE tngLenta ADD COLUMN datest TEXT;");
                 //db.execSQL("drop table if exists tngLenta");
                 /*
@@ -185,12 +189,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView myTxtTitle;
         public TextView myTxtDescription;
-        public ImageView myTxtOptionDigit;
+        public TextView myTxtOptionDigit;
+        //public ImageView myTxtOptionDigit;
         public ViewHolder(View itemView) {
             super(itemView);
             myTxtTitle = (TextView) itemView.findViewById(R.id.myTxtTitle);
-            myTxtDescription = (TextView) itemView.findViewById(R.id.myTxtDescrip);
-            myTxtOptionDigit = (ImageView) itemView.findViewById(R.id.myTxtOptionDigit);
+            //holder.            myTxtTitle.setTextSize(mContext,R.dimen.text_style_Large);
+            //myTxtDescription = (TextView) itemView.findViewById(R.id.myTxtDescrip);
+            myTxtOptionDigit = (TextView) itemView.findViewById(R.id.myTxtOptionDigit);
+            //myTxtOptionDigit = (ImageView) itemView.findViewById(R.id.myTxtOptionDigit);
 
         }
     }
