@@ -16,45 +16,89 @@
             android:padding="@dimen/text_margin">
             <TextView
                 android:id="@+id/myTxtTitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title"
-                android:textSize="@dimen/text_style_Large"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:textColor="@color/colorPrimaryDark"/>
-            <!--<TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/myTxtDescrip"
-                android:text="Descript"
-                android:textSize="@dimen/text_style_Small"
-                android:textColor="@color/colorPrimary"
-                android:layout_below="@id/myTxtTitle"/>
-                -->
-            <!--
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="Black"
-                android:textSize="@dimen/text_style_Large"
-            -->
             <TextView
                 android:id="@+id/myTxtOptionDigit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
-                android:textSize="@dimen/text_style_Large"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:paddingLeft="@dimen/text_margin"
-                />
-
-            <!--<ImageView
+                android:paddingLeft="@dimen/text_margin"/>
+            <!--
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu_black_48dp"
+                android:id="@+id/myTxtDescrip"
+                android:text="Descript"
+
+
+                android:layout_below="@id/myTxtTitle"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myTxtDescrip2"
+                android:text="Descript"
+
+
+                android:layout_below="@id/myTxtDescrip"/>
+            <TextView
+                android:id="@+id/myTxtTitleL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:layout_marginLeft="40dp"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_toRightOf="@id/myTxtTitle"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myTxtDescripM"
+                android:text="Descript"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:layout_toRightOf="@id/myTxtTitle"
+
+                android:layout_marginLeft="40dp"
+                android:layout_below="@id/myTxtTitleL"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myTxtDescripS"
+                android:text="Descript"
+                android:textAppearance="?android:textAppearanceSmall"
+
+                android:layout_marginLeft="40dp"
+                android:layout_toRightOf="@id/myTxtTitle"
+                android:layout_below="@id/myTxtDescripM"/>
+                -->
+
+            <!--
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textSize="@dimen/text_style_Large"
+                android:textColor="Black"
+                android:textSize="@dimen/text_style_Large"
+                android:text="&#8942;"
+                <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_circle_outline_black_24dp"
                 android:id="@+id/myTxtOptionDigit"
                 android:layout_alignParentRight="true"/>
-                android:text="&#8942;"
-                -->
+
+
+             -->
+
+
+
+
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

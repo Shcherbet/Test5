@@ -57,7 +57,7 @@ public class Main2Activity extends AppCompatActivity {
             Calendar calDay = new GregorianCalendar();
             calDay.add(Calendar.DAY_OF_YEAR,i-minD);
 
-            listItems.add(new RecyclerItem("Item " + (format2.format(calDay.getTime())) ,"Date" +(format2.format(d))));
+            listItems.add(new RecyclerItem("Date " + (format2.format(calDay.getTime())) ,"Date " +(format2.format(d))));
         }
         // set adapter
         adapter = new MyAdapter(listItems, this);

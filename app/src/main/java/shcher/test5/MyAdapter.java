@@ -51,14 +51,63 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         final RecyclerItem itemList = listItems.get(position);
         dbHelper = new DBHelper(mContext);
         db = dbHelper.getWritableDatabase();
+        Cursor cView;
+        float myTxtSize;
 
         //final Re// itemList1 = listItems.get(position);
 
         holder.myTxtTitle.setText(itemList.getTitle());
+        //holder.myTxtTitleL.setText(itemList.getTitle());
         //holder.myTxtTitle.setTextAppearance(R.style.TextAppearance_AppCompat_Small);
-        //holder.myTxtTitle.setTextSize(R.dimen.text_style_Large);
+        /*
+        SimpleDateFormat format2 = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        String sqlQuery = "select _id, name, date, date2  from list where date between ? and ? ";
+        Date startDay = new Date();
+        long startDayLong =  startDay.getTime();
+        String currentDate = format2.format(startDayLong);
+        Date tecDate2 = null;
+        try {
+            tecDate2 = format2.parse(currentDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long qwe = tecDate2.getTime();
+        long qwe2 = qwe+(24 * 60 * 60 * 1000);
+        Date as1 = new Date(qwe);
+        Date as2 = new Date(qwe2);
 
-        //holder.myTxtDescription.setText(itemList.getDescription());//?android:textAppearanceLarge
+
+        cView = db.rawQuery(sqlQuery, new String[]{String.valueOf(qwe),String.valueOf(qwe2)});
+        //c =db.query(DBHelper.TABLE_LIST, null,  new String("DATE < ?"), new String[]{String.valueOf(startDayLong)},null,null,null );
+        //(sqlQuery,startDay );
+        //Log.d("mLog"," cursor: " + c);
+
+        // contentValues.put(DBHelper.KEY_NAME, "STAAS");
+        if (cView.moveToFirst()){
+
+            int idIndex = cView.getColumnIndex(DBHelper.KEY_ID);
+            int nameIndex = cView.getColumnIndex(DBHelper.KEY_NAME);
+            int dateIndex = cView.getColumnIndex(DBHelper.KEY_DATE);
+            int date2Index = cView.getColumnIndex(DBHelper.KEY_DATE2);
+            do {
+                Log.d("mLog"," ID = " + c.getInt(idIndex)
+                        + ", name - " + c.getString(nameIndex)
+                        + ", date = " +c.getString(dateIndex)
+                        + ", date2 = " +c.getString(date2Index));
+            } while (c.moveToNext());
+
+            myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
+        } else  myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Small);
+        //Log.d("mLog"," 0 rows ");
+        cView.close();
+        */
+
+        //holder.myTxtDescription.setText(itemList.getDescription());
+        //holder.myTxtDescription.setTextSize(mContext.getResources().getDimension(R.dimen.text_style_Medium));
+        //holder.myTxtDescription2.setText(itemList.getDescription());
+        //holder.myTxtDescription2.setTextSize(mContext.getResources().getDimension(R.dimen.text_style_Small));
+        //holder.myTxtDescriptionM.setText(itemList.getDescription());
+        //holder.myTxtDescriptionS.setText(itemList.getDescription());
         holder.myTxtOptionDigit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,9 +125,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                 // подключение к БД
                 //dbHelper.onCreate();
                 //dbHelper.onUpgrade( db,2,3);
-
                 //db.execSQL("drop table if exists tngList");
                 final ContentValues contentValues = new ContentValues();
+
 
 
                 PopupMenu popupMenu = new PopupMenu(mContext,holder.myTxtOptionDigit);
@@ -87,6 +136,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
+                        float myTxtSize;
                         Date startDay = new Date();
                         long startDayLong =  startDay.getTime();
                         int minD =  mContext.getResources().getInteger(R.integer.minDays);
@@ -98,6 +148,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                         SimpleDateFormat format2 = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
                         //long stD = startDay.getTime();
                         //long stMil = stD.getTime();
+                        myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
+                        holder.myTxtTitle.setTextSize(myTxtSize);
+                        holder.myTxtOptionDigit.setTextSize(myTxtSize);
 
 
 
@@ -124,11 +177,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }
-
-
                                 long qwe = tecDate2.getTime();
                                 long qwe2 = qwe+(24 * 60 * 60 * 1000);
-
                                 Date as1 = new Date(qwe);
                                 Date as2 = new Date(qwe2);
                                 //String currentDate2 = format2.format(startDayLong2);
@@ -188,16 +238,29 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView myTxtTitle;
-        public TextView myTxtDescription;
         public TextView myTxtOptionDigit;
-        //public ImageView myTxtOptionDigit;
+        /*
+        public TextView myTxtDescription;
+        public TextView myTxtDescription2;
+        public TextView myTxtTitleL;
+        public TextView myTxtDescriptionM;
+        public TextView myTxtDescriptionS;
+        public TextView myTxtOptionDigit;
+        public ImageView myTxtOptionDigit;
+        */
         public ViewHolder(View itemView) {
             super(itemView);
             myTxtTitle = (TextView) itemView.findViewById(R.id.myTxtTitle);
-            //holder.            myTxtTitle.setTextSize(mContext,R.dimen.text_style_Large);
-            //myTxtDescription = (TextView) itemView.findViewById(R.id.myTxtDescrip);
             myTxtOptionDigit = (TextView) itemView.findViewById(R.id.myTxtOptionDigit);
-            //myTxtOptionDigit = (ImageView) itemView.findViewById(R.id.myTxtOptionDigit);
+            //holder.            myTxtTitle.setTextSize(mContext,R.dimen.text_style_Large);
+            /*
+            myTxtDescription = (TextView) itemView.findViewById(R.id.myTxtDescrip);
+            myTxtTitleL = (TextView) itemView.findViewById(R.id.myTxtTitleL);
+            myTxtDescription2 = (TextView) itemView.findViewById(R.id.myTxtDescrip2);
+            myTxtDescriptionM = (TextView) itemView.findViewById(R.id.myTxtDescripM);
+            myTxtDescriptionS = (TextView) itemView.findViewById(R.id.myTxtDescripS);
+            myTxtOptionDigit = (ImageView) itemView.findViewById(R.id.myTxtOptionDigit);
+            */
 
         }
     }
