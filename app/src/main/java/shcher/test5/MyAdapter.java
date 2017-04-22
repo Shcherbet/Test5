@@ -51,19 +51,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         final RecyclerItem itemList = listItems.get(position);
         dbHelper = new DBHelper(mContext);
         db = dbHelper.getWritableDatabase();
-        Cursor cView;
-        float myTxtSize;
+
+
 
         //final Re// itemList1 = listItems.get(position);
 
         holder.myTxtTitle.setText(itemList.getTitle());
         //holder.myTxtTitleL.setText(itemList.getTitle());
         //holder.myTxtTitle.setTextAppearance(R.style.TextAppearance_AppCompat_Small);
-        /*
-        SimpleDateFormat format2 = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-        String sqlQuery = "select _id, name, date, date2  from list where date between ? and ? ";
+        //holder.myTxtDescription.setText(itemList.getDescription());
+        //holder.myTxtDescription.setTextSize(mContext.getResources().getDimension(R.dimen.text_style_Medium));
+        //holder.myTxtDescription2.setText(itemList.getDescription());
+        //holder.myTxtDescription2.setTextSize(mContext.getResources().getDimension(R.dimen.text_style_Small));
+        //holder.myTxtDescriptionM.setText(itemList.getDescription());
+        //holder.myTxtDescriptionS.setText(itemList.getDescription());
+        Cursor cView;
+        float myTxtSize;
         Date startDay = new Date();
         long startDayLong =  startDay.getTime();
+        int minD =  mContext.getResources().getInteger(R.integer.minDays);
+        startDayLong = startDayLong+((position-minD)*(24 * 60 * 60 * 1000));
+        SimpleDateFormat format2 = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+
         String currentDate = format2.format(startDayLong);
         Date tecDate2 = null;
         try {
@@ -76,38 +85,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         Date as1 = new Date(qwe);
         Date as2 = new Date(qwe2);
 
-
+        String sqlQuery = "select _id, name, date, date2  from list where date between ? and ? ";
         cView = db.rawQuery(sqlQuery, new String[]{String.valueOf(qwe),String.valueOf(qwe2)});
-        //c =db.query(DBHelper.TABLE_LIST, null,  new String("DATE < ?"), new String[]{String.valueOf(startDayLong)},null,null,null );
-        //(sqlQuery,startDay );
-        //Log.d("mLog"," cursor: " + c);
 
-        // contentValues.put(DBHelper.KEY_NAME, "STAAS");
         if (cView.moveToFirst()){
 
-            int idIndex = cView.getColumnIndex(DBHelper.KEY_ID);
-            int nameIndex = cView.getColumnIndex(DBHelper.KEY_NAME);
-            int dateIndex = cView.getColumnIndex(DBHelper.KEY_DATE);
-            int date2Index = cView.getColumnIndex(DBHelper.KEY_DATE2);
-            do {
-                Log.d("mLog"," ID = " + c.getInt(idIndex)
-                        + ", name - " + c.getString(nameIndex)
-                        + ", date = " +c.getString(dateIndex)
-                        + ", date2 = " +c.getString(date2Index));
-            } while (c.moveToNext());
-
             myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
-        } else  myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Small);
-        //Log.d("mLog"," 0 rows ");
-        cView.close();
-        */
 
-        //holder.myTxtDescription.setText(itemList.getDescription());
-        //holder.myTxtDescription.setTextSize(mContext.getResources().getDimension(R.dimen.text_style_Medium));
-        //holder.myTxtDescription2.setText(itemList.getDescription());
-        //holder.myTxtDescription2.setTextSize(mContext.getResources().getDimension(R.dimen.text_style_Small));
-        //holder.myTxtDescriptionM.setText(itemList.getDescription());
-        //holder.myTxtDescriptionS.setText(itemList.getDescription());
+        } else {
+            myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Small);
+
+        }
+        cView.close();
+
+        holder.myTxtTitle.setTextSize(myTxtSize);
+        holder.myTxtOptionDigit.setTextSize(myTxtSize);
+
+
+
+
         holder.myTxtOptionDigit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,12 +144,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                         SimpleDateFormat format2 = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
                         //long stD = startDay.getTime();
                         //long stMil = stD.getTime();
-                        myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
-                        holder.myTxtTitle.setTextSize(myTxtSize);
-                        holder.myTxtOptionDigit.setTextSize(myTxtSize);
-
-
-
+                        //myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
+                        //holder.myTxtTitle.setTextSize(myTxtSize);
+                        //holder.myTxtOptionDigit.setTextSize(myTxtSize);
 
                         switch (item.getItemId()){
                             case R.id.mnu_item_add:
@@ -162,6 +155,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                                 contentValues.put(DBHelper.KEY_DATE, startDayLong ); //startDayLong
                                 contentValues.put(DBHelper.KEY_DATE2, (format1.format(tecDate.getTime())) );
                                 db.insert(DBHelper.TABLE_LIST,null,contentValues);
+                                myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
+                                holder.myTxtTitle.setTextSize(myTxtSize);
+                                holder.myTxtOptionDigit.setTextSize(myTxtSize);
 
                                 Toast.makeText(mContext,"Add " + (format1.format(startDay.getTime()))+ " long " + startDayLong + " дата"+ (format1.format(tecDate.getTime())),Toast.LENGTH_SHORT).show();
                                 break;
@@ -248,6 +244,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         public TextView myTxtOptionDigit;
         public ImageView myTxtOptionDigit;
         */
+
         public ViewHolder(View itemView) {
             super(itemView);
             myTxtTitle = (TextView) itemView.findViewById(R.id.myTxtTitle);
@@ -260,6 +257,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             myTxtDescriptionM = (TextView) itemView.findViewById(R.id.myTxtDescripM);
             myTxtDescriptionS = (TextView) itemView.findViewById(R.id.myTxtDescripS);
             myTxtOptionDigit = (ImageView) itemView.findViewById(R.id.myTxtOptionDigit);
+
             */
 
         }
