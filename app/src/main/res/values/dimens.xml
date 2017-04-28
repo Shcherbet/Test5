@@ -5,6 +5,9 @@
     <dimen name="text_style_Large">8sp</dimen>
     <dimen name="text_style_Medium">6sp</dimen>
     <dimen name="text_style_Small">4sp</dimen>
+    <integer name="grid_span_1">1</integer>
+    <integer name="grid_span_2">2</integer>
+    <integer name="grid_span_3">3</integer>
 
 
 </resources>

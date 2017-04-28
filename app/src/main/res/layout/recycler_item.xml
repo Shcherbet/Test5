@@ -1,44 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#e0e0e0">
+
+        <TextView
+            android:id="@+id/myTxtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_alignParentLeft="true"
+            android:text="Text"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/myTxtOptionDigit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="+"
+            android:textColor="@color/colorPrimaryDark" />
+</RelativeLayout>
+
+            <!--
+
+            horizontal
+            vertical
+
+               <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/text_margin"
+            android:id="@+id/listcard3">
+
+              android:paddingLeft="@dimen/text_margin"
+
+         </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/myRelList"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:layout_below="@id/myTxtTitle"
+                android:orientation="vertical"
+                android:visibility="gone">
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="shcher.test5.Main2Activity">
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:elevation="4dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/text_margin">
+
+            visible
+
+            android:drawable/editbox_background_normal
+            btn_default
+            dialog_holo_light_frame
+
             <TextView
-                android:id="@+id/myTxtTitle"
-                android:layout_width="wrap_content"
+                    android:id="@+id/myTxtDescrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descript" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Title"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/colorPrimaryDark"/>
-            <TextView
-                android:id="@+id/myTxtOptionDigit"
-                android:layout_width="wrap_content"
+                android:id="@+id/listCard"
+                android:layout_margin="4dp"
+                android:elevation="4dp"
+                android:layout_below="@id/myTxtTitle">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/myTxtDescrip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Descript" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            android:background="@drawable/roundrect"
+
+
+                    <TextView
+                        android:id="@+id/myTxtDescrip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Descript" />
+
+                    <TextView
+                        android:id="@+id/myTxtDescrip2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/myTxtDescrip"
+
+
+                        android:text="Descript" />
+
+                    <TextView
+                        android:id="@+id/myTxtTitleL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="Title"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="+"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:paddingLeft="@dimen/text_margin"/>
-            <!--
+                android:id="@+id/listCard"
+                android:layout_margin="4dp"
+                android:elevation="4dp"
+                android:layout_below="@id/myTxtTitle">
+            </android.support.v7.widget.CardView>
+             <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:id="@+id/TrenList"
+                    android:layout_margin="4dp"
+                    android:layout_below="@id/myTxtTitle">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/myTxtDescrip"
                 android:text="Descript"
-
-
                 android:layout_below="@id/myTxtTitle"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -96,10 +194,3 @@
              -->
 
 
-
-
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-</LinearLayout>
