@@ -89,8 +89,8 @@ public class Main2Activity extends AppCompatActivity {
     private void generateMeetData() {
 
         //Calendar calDay = new GregorianCalendar();
-        Date d = new Date();
-        SimpleDateFormat format2 = new SimpleDateFormat("dd MMMM", Locale.getDefault());
+        //Date d = new Date();
+        SimpleDateFormat myFt = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         int minD =  this.getResources().getInteger(R.integer.minDays);
         int maxD =  this.getResources().getInteger(R.integer.maxDays);
 
@@ -100,12 +100,13 @@ public class Main2Activity extends AppCompatActivity {
             Calendar calDay = new GregorianCalendar();
             calDay.add(Calendar.DAY_OF_YEAR,i-minD);
             //currentDay = new Date();
-            dm.setDateList("Дата " + (format2.format(calDay.getTime())));
+            dm.setDateList(myFt.format(calDay.getTime()));
+            //dm.setDateList(calDay.getTime());
 
             ArrayList<String> singleMeet = new ArrayList<>();
             for (int j = 1; j <= 2; j++) {
 
-                singleMeet.add("Время " + j);
+                singleMeet.add("Время терн " + j);
             }
 
             dm.setAllMeetTime(singleMeet);

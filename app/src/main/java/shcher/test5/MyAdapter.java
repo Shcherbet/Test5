@@ -63,10 +63,40 @@ public class MyAdapter extends SectionedRecyclerViewAdapter<RecyclerView.ViewHol
     @Override
     public void onBindHeaderViewHolder(final RecyclerView.ViewHolder holder, final int meetcount) {
 
-        String curDate = allData.get(meetcount).getDateList();
+        final String curDate = allData.get(meetcount).getDateList();
         final SectionViewHolder dateViewHolder = (SectionViewHolder) holder;
         dateViewHolder.myTxtTitle.setText(curDate);
-        // holder.myTxtOptionDigit.setOnClickListener(new View.OnClickListener() {
+        dbHelper = new DBHelper(mContext);
+        db = dbHelper.getWritableDatabase();
+
+
+        float myTxtSize;
+
+        SimpleDateFormat myFt = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        Date tecDate2 = null;
+        try {
+            tecDate2 = myFt.parse(curDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long qwe = tecDate2.getTime();
+        long qwe2 = qwe+(24 * 60 * 60 * 1000);
+        //Log.d("mLog"," tecDate2: " + tecDate2 + " qwe "+ qwe);
+
+
+        String sqlQuery = "select _id, name, date, date2  from list where date>=? and date<? ";
+        Cursor cView;
+        cView = db.rawQuery(sqlQuery, new String[]{String.valueOf(qwe),String.valueOf(qwe2)});
+        myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Small);
+
+        if (cView.moveToFirst()){
+                myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
+        }
+        cView.close();
+
+        dateViewHolder.myTxtTitle.setTextSize(myTxtSize);
+        dateViewHolder.myTxtOptionDigit.setTextSize(myTxtSize);
+
         dateViewHolder.myTxtOptionDigit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,32 +107,43 @@ public class MyAdapter extends SectionedRecyclerViewAdapter<RecyclerView.ViewHol
                                 @Override
                                 public boolean onMenuItemClick(MenuItem item) {
 
-                                    float myTxtSize;
+                                    //float myTxtSize;
                                     Date startDay = new Date();
                                     long startDayLong =  startDay.getTime();
-                                    int minD =  mContext.getResources().getInteger(R.integer.minDays);
-                                    startDayLong = startDayLong+((meetcount-minD)*(24 * 60 * 60 * 1000));
+                                    //int minD =  mContext.getResources().getInteger(R.integer.minDays);
+                                 //   startDayLong = startDayLong+((meetcount)*(24 * 60 * 60 * 1000));
 
                                     //startDay.add(Calendar.DAY_OF_YEAR,position-minD);
                                     //int days = (int) (minD / (24 * 60 * 60 * 1000));
                                     SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
-                                    SimpleDateFormat format2 = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+                                 //   SimpleDateFormat format2 = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
                                     //long stD = startDay.getTime();
                                     //long stMil = stD.getTime();
                                     //myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
                                     //holder.myTxtTitle.setTextSize(myTxtSize);
                                     //holder.myTxtOptionDigit.setTextSize(myTxtSize);
+                                    SimpleDateFormat myFt = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+                                    Date tecDate2 = null;
+                                    try {
+                                        tecDate2 = myFt.parse(curDate);
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                    long qwe = tecDate2.getTime();
+                                    long qwe2 = qwe+(24 * 60 * 60 * 1000);
+
 
                                     switch (item.getItemId()){
                                         case R.id.mnu_item_add:
                                             Date tecDate = new Date(startDayLong);
                                             contentValues.put(DBHelper.KEY_NAME, "STAAS");
-                                            contentValues.put(DBHelper.KEY_DATE, startDayLong ); //startDayLong
-                                            contentValues.put(DBHelper.KEY_DATE2, (format1.format(tecDate.getTime())) );
+                                            contentValues.put(DBHelper.KEY_DATE, qwe ); //startDayLong startDayLong
+                                            contentValues.put(DBHelper.KEY_DATE2, (format1.format(tecDate.getTime())) ); //(format1.format(tecDate.getTime()))
+                                            //Log.d("mLog"," ID = " + contentValues);
                                             db.insert(DBHelper.TABLE_LIST,null,contentValues);
-                                            myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
-                                            dateViewHolder.myTxtTitle.setTextSize(myTxtSize);
-                                            dateViewHolder.myTxtOptionDigit.setTextSize(myTxtSize);
+                                            //myTxtSize = mContext.getResources().getDimension(R.dimen.text_style_Large);
+                                            //dateViewHolder.myTxtTitle.setTextSize(myTxtSize);
+                                            //dateViewHolder.myTxtOptionDigit.setTextSize(myTxtSize);
 
                                             Toast.makeText(mContext,"Add " + (format1.format(startDay.getTime()))+ " long " + startDayLong + " дата"+ (format1.format(tecDate.getTime())),Toast.LENGTH_SHORT).show();
                                             break;
@@ -111,15 +152,6 @@ public class MyAdapter extends SectionedRecyclerViewAdapter<RecyclerView.ViewHol
                                             Cursor c;
                                             //SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
                                             //startDayLong = startDayLong-(24 * 60 * 60 * 1000);
-                                            String currentDate = format2.format(startDayLong);
-                                            Date tecDate2 = null;
-                                            try {
-                                                tecDate2 = format2.parse(currentDate);
-                                            } catch (ParseException e) {
-                                                e.printStackTrace();
-                                            }
-                                            long qwe = tecDate2.getTime();
-                                            long qwe2 = qwe+(24 * 60 * 60 * 1000);
                                             Date as1 = new Date(qwe);
                                             Date as2 = new Date(qwe2);
                                             String sqlQuery = "select _id, name, date, date2  from list where date between ? and ? ";
